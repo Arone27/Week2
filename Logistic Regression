@@ -43,8 +43,8 @@ def min_max_normalized(data):
   return normal_data
 X=min_max_normalized(X)
 
-w=tf.Variable(tf.random.normal(shape=[4,1]))
-b = tf.Variable(tf.random.normal(shape=[1, 1])) #bias
+w=tf.Variable(tf.random.normal(shape=[4,1],seed=5))
+b = tf.Variable(tf.random.normal(shape=[1, 1],seed=5)) #bias
 #constructor for random initialization
 init=tf.global_variables_initializer()
 sess = tf.Session()
@@ -123,5 +123,3 @@ plt.title('Train Accuracy')
 plt.ylabel('accuracy')
 plt.xlabel('epoch')
 plt.show()
-
-
