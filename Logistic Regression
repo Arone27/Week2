@@ -41,7 +41,7 @@ test_y = Y[test_index]
 def min_max_normalized(data):
   normal_data=(data-data.min())/(data.max()-data.min())
   return normal_data
-train_X=min_max_normalized(train_X)
+train_X=min_max_normalized(train_X) 
 test_X=min_max_normalized(test_X)
 
 w=tf.Variable(tf.random.normal(shape=[4,1],seed=5))
