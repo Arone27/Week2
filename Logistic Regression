@@ -41,7 +41,8 @@ test_y = Y[test_index]
 def min_max_normalized(data):
   normal_data=(data-data.min())/(data.max()-data.min())
   return normal_data
-X=min_max_normalized(X)
+train_X=min_max_normalized(train_X)
+test_X=min_max_normalized(test_X)
 
 w=tf.Variable(tf.random.normal(shape=[4,1],seed=5))
 b = tf.Variable(tf.random.normal(shape=[1, 1],seed=5)) #bias
@@ -55,7 +56,7 @@ data = tf.placeholder(dtype=tf.float32, shape=[None, 4])#comment on the differen
 #Variable is used to store values that change in the program and it's size is fixed and must be specified before
 target = tf.placeholder(dtype=tf.float32, shape=[None, 1])
 
-mod=tf.add(b,(tf.matmul(data,w))) #model
+mod=tf.matmul(data,w)+b #model
 
 loss = tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(logits=mod, labels=target))
 
